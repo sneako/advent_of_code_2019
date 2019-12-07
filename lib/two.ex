@@ -1,12 +1,13 @@
 defmodule AdventOfCode2019.Two do
-  alias AdventOfCode2019.{Intcode, Utils}
+  import AdventOfCode2019
+  alias AdventOfCode2019.Intcode
 
   @doc """
     iex> AdventOfCode2019.Two.part_one()
     2_782_414
   """
   def part_one do
-    data()
+    input()
     |> List.replace_at(1, 12)
     |> List.replace_at(2, 2)
     |> Intcode.run()
@@ -18,7 +19,7 @@ defmodule AdventOfCode2019.Two do
     9820
   """
   def part_two do
-    data = data()
+    data = input()
 
     Enum.reduce_while(99..1, [], fn noun, _ ->
       Enum.reduce_while(99..1, [], fn verb, _ ->
@@ -39,5 +40,5 @@ defmodule AdventOfCode2019.Two do
     end)
   end
 
-  defp data, do: Utils.data("two.txt", ~r/,|\n/) |> Enum.map(&String.to_integer/1)
+  defp input, do: data("two.txt", ~r/,|\n/) |> Enum.map(&String.to_integer/1)
 end

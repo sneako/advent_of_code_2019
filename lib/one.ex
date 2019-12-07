@@ -1,5 +1,6 @@
 defmodule AdventOfCode2019.One do
-  alias AdventOfCode2019.Utils
+  import AdventOfCode2019
+
   @doc """
   To find the fuel required for a module, take its mass, divide by three, round down, and subtract 2.
 
@@ -24,6 +25,7 @@ defmodule AdventOfCode2019.One do
   """
   def recursive_required_fuel(mass, total \\ 0) do
     required = required_fuel(mass)
+
     if required > 0 do
       recursive_required_fuel(required, required + total)
     else
@@ -31,8 +33,12 @@ defmodule AdventOfCode2019.One do
     end
   end
 
+  @doc """
+    iex> AdventOfCode2019.One.part_one()
+    3_488_702
+  """
   def part_one do
-    Utils.data("one.txt")
+    data("one.txt")
     |> Enum.reduce(0, fn value, acc ->
       value
       |> String.to_integer()
@@ -41,8 +47,12 @@ defmodule AdventOfCode2019.One do
     end)
   end
 
+  @doc """
+    iex> AdventOfCode2019.One.part_two()
+    5_230_169
+  """
   def part_two do
-    Utils.data("one.txt")
+    data("one.txt")
     |> Enum.reduce(0, fn value, acc ->
       value
       |> String.to_integer()

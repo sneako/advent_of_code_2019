@@ -1,18 +1,9 @@
 defmodule AdventOfCode2019 do
-  @moduledoc """
-  Documentation for AdventOfCode2019.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> AdventOfCode2019.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def data(filename, separator \\ "\n") do
+    :advent_of_code_2019
+    |> :code.priv_dir()
+    |> Path.join(filename)
+    |> File.read!()
+    |> String.split(separator, trim: true)
   end
 end
